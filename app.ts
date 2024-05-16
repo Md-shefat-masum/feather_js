@@ -635,6 +635,7 @@ class MessageService {
         let new_data = {
             id: Math.random(),
             title: data.text,
+            text: data.text,
         };
         posts.unshift(new_data);
         return new_data;
