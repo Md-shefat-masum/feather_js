@@ -83,7 +83,14 @@ app.use(cors({
 // Register REST service handler
 app.configure(rest())
 // Configure Socket.io real-time APIs
-app.configure(socketio())
+app.configure(socketio({
+    cors: {
+        origin: '*', // Allow all origins
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true
+    }
+}))
 // Register our messages service
 app.use('messages', new MessageService())
 app.use('users2', new UserService())
@@ -91,7 +98,7 @@ app.use('users2', new UserService())
 // Add any new real-time connection to the `everybody` channel
 app.on('connection', (connection) => {
     // console.log(connection);
-    
+
     return app.channel('everybody').join(connection)
 })
 // Publish all events to the `everybody` channel
