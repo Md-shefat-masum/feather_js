@@ -50,9 +50,10 @@
 
         // Renders a single message on the page
         function addMessage(message) {
+            console.log(message);
             document.getElementById('main').innerHTML += `<div class="chat chat-start">
-          <div class="chat-bubble">${message.text}</div>
-        </div>`
+                <div class="chat-bubble">${message.title}</div>
+            </div>`
         }
 
         const main = async () => {
