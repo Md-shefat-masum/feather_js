@@ -632,11 +632,12 @@ class MessageService {
         // Add new message to the list
         this.messages.push(message)
 
-        posts.unshift({
+        let new_data = {
             id: Math.random(),
             title: data.text,
-        });
-        return message
+        };
+        posts.unshift(new_data);
+        return new_data;
     }
 }
 
