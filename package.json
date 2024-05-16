@@ -17,6 +17,7 @@
   "dependencies": {
     "@feathersjs/feathers": "^5.0.25",
     "@feathersjs/koa": "^5.0.25",
-    "@feathersjs/socketio": "^5.0.25"
+    "@feathersjs/socketio": "^5.0.25",
+    "nodemon": "^3.1.0"
   }
 }
