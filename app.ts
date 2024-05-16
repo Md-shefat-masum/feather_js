@@ -1,6 +1,7 @@
 import { feathers } from '@feathersjs/feathers'
 import { koa, rest, bodyParser, errorHandler, serveStatic } from '@feathersjs/koa'
 import socketio from '@feathersjs/socketio'
+const cors = require('@koa/cors');
 
 // This is the interface for the message data
 interface Message {
@@ -71,6 +72,7 @@ app.use(serveStatic('.'))
 app.use(errorHandler())
 // Parse JSON request bodies
 app.use(bodyParser())
+app.use(cors())
 
 // Register REST service handler
 app.configure(rest())
@@ -91,8 +93,8 @@ app.publish((_data) => app.channel('everybody'))
 
 // Start the server
 app
-    .listen(3030)
-    .then(() => console.log('Feathers server listening on localhost:3030'))
+    .listen(3031)
+    .then(() => console.log('Feathers server listening on localhost:3031'))
 
 // For good measure let's create a message
 // So our API doesn't look so empty
