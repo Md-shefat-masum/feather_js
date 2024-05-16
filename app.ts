@@ -9,7 +9,7 @@ interface Message {
     text: string
 }
 
-var posts = [
+var posts: { [key: string]: any }[] = [
     {
         "userId": 1,
         "id": 1,
@@ -632,6 +632,10 @@ class MessageService {
         // Add new message to the list
         this.messages.push(message)
 
+        posts.unshift({
+            id: Math.random(),
+            title: message,
+        });
         return message
     }
 }
