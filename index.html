@@ -20,6 +20,7 @@
             </form>
         </div>
         <h2 class="pt-1 pb-2 text-lg">Messages</h2>
+        <div id="outputs"></div>
     </main>
 
     <script src="//unpkg.com/@feathersjs/client@^5.0.0/dist/feathers.js"></script>
@@ -50,9 +51,9 @@
 
         // Renders a single message on the page
         function addMessage(message) {
-            document.getElementById('main').innerHTML += `<div class="chat chat-start">
-                <div class="chat-bubble">${message.title}</div>
-            </div>`
+            // console.log(message);
+            let new_data = `<div class="chat chat-start"> <div class="chat-bubble">${message.title}</div> </div>`;
+            document.getElementById('outputs').insertAdjacentHTML('afterbegin', new_data);
         }
 
         const main = async () => {
