@@ -73,6 +73,12 @@ app.use(errorHandler())
 // Parse JSON request bodies
 app.use(bodyParser())
 app.use(cors())
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true // Allow credentials (cookies, authorization headers, etc.)
+}));
 
 // Register REST service handler
 app.configure(rest())
