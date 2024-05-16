@@ -637,7 +637,7 @@ class MessageService {
             title: data.text,
             text: data.text,
         };
-        posts.unshift(new_data);
+        posts.push(new_data);
         return new_data;
     }
 }
