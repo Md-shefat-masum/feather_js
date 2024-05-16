@@ -634,7 +634,7 @@ class MessageService {
 
         posts.unshift({
             id: Math.random(),
-            title: message,
+            title: data.text,
         });
         return message
     }
