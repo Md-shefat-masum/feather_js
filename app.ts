@@ -90,7 +90,7 @@ app.use('users2', new UserService())
 
 // Add any new real-time connection to the `everybody` channel
 app.on('connection', (connection) => {
-    console.log(connection);
+    // console.log(connection);
     
     return app.channel('everybody').join(connection)
 })
