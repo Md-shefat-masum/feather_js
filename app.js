@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var feathers_1 = require("@feathersjs/feathers");
 var koa_1 = require("@feathersjs/koa");
 var socketio_1 = require("@feathersjs/socketio");
+var cors_1 = require("@koa/cors");
 // A messages service that allows us to create new
 // and return all existing messages
 var MessageService = /** @class */ (function () {
@@ -105,10 +106,11 @@ app.use((0, koa_1.serveStatic)('.'));
 app.use((0, koa_1.errorHandler)());
 // Parse JSON request bodies
 app.use((0, koa_1.bodyParser)());
+app.use((0, cors_1.default)());
 // Register REST service handler
 app.configure((0, koa_1.rest)());
 // Configure Socket.io real-time APIs
-app.configure((0, socketio_1)());
+app.configure((0, socketio_1.default)());
 // Register our messages service
 app.use('messages', new MessageService());
 app.use('users2', new UserService());
@@ -121,8 +123,8 @@ app.on('connection', function (connection) {
 app.publish(function (_data) { return app.channel('everybody'); });
 // Start the server
 app
-    .listen(3031)
-    .then(function () { return console.log('Feathers server listening on http://localhost:3031'); });
+    .listen(3030)
+    .then(function () { return console.log('Feathers server listening on localhost:3030'); });
 // For good measure let's create a message
 // So our API doesn't look so empty
 app.service('messages').create({
